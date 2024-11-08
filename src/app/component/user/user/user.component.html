@@ -1,0 +1,118 @@
+<app-mainheader></app-mainheader>
+<div class="user-management-container">
+  <h2>User Management</h2>
+
+  <!-- Edit User Card -->
+  <mat-card *ngIf="selectedUser" class="user-card">
+    <mat-card-header>
+      <mat-card-title>Edit User</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form (ngSubmit)="updateUser()" #editUserForm="ngForm">
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Username</mat-label>
+          <input matInput [(ngModel)]="selectedUser.username" name="username" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Full Name</mat-label>
+          <input matInput [(ngModel)]="selectedUser.fullName" name="fullName" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Role</mat-label>
+          <mat-select [(ngModel)]="selectedUser.role" name="role" required>
+            <mat-option value="Admin">Admin</mat-option>
+            <mat-option value="HR Manager">HR Manager</mat-option>
+            <mat-option value="HR Staff">HR Staff</mat-option>
+            <mat-option value="Employee">Employee</mat-option>
+            <mat-option value="Manager">Manager</mat-option>
+            <mat-option value="Payroll Specialist">Payroll Specialist</mat-option>
+            <mat-option value="Recruiter">Recruiter</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <div class="action-buttons">
+          <button mat-raised-button color="primary" type="submit">Update</button>
+          <button mat-button (click)="selectedUser = null">Cancel</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Create New User Card -->
+  <mat-card *ngIf="!selectedUser" class="user-card">
+    <mat-card-header>
+      <mat-card-title>Create New User</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form (ngSubmit)="createUser()" #createUserForm="ngForm">
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Username</mat-label>
+          <input matInput [(ngModel)]="newUser.username" name="username" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Full Name</mat-label>
+          <input matInput [(ngModel)]="newUser.fullName" name="fullName" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Role</mat-label>
+          <mat-select [(ngModel)]="newUser.role" name="role" required>
+            <mat-option value="Admin">Admin</mat-option>
+            <mat-option value="HR Manager">HR Manager</mat-option>
+            <mat-option value="HR Staff">HR Staff</mat-option>
+            <mat-option value="Employee">Employee</mat-option>
+            <mat-option value="Manager">Manager</mat-option>
+            <mat-option value="Payroll Specialist">Payroll Specialist</mat-option>
+            <mat-option value="Recruiter">Recruiter</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div class="action-buttons">
+          <button mat-raised-button color="primary" type="submit">Create</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- User List Section -->
+  <h3>User List</h3>
+  <table mat-table [dataSource]="users" class="mat-elevation-z8 user-table">
+
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID </th>
+      <td mat-cell *matCellDef="let user"> {{ user.id }} </td>
+    </ng-container>
+    <!-- Username Column -->
+    <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef> Username </th>
+      <td mat-cell *matCellDef="let user"> {{ user.username }} </td>
+    </ng-container>
+
+    <!-- Full Name Column -->
+    <ng-container matColumnDef="fullName">
+      <th mat-header-cell *matHeaderCellDef> Full Name </th>
+      <td mat-cell *matCellDef="let user"> {{ user.fullName }} </td>
+    </ng-container>
+
+    <!-- Role Column -->
+    <ng-container matColumnDef="role">
+      <th mat-header-cell *matHeaderCellDef> Role </th>
+      <td mat-cell *matCellDef="let user"> {{ user.role }} </td>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Actions </th>
+      <td mat-cell *matCellDef="let user">
+        <button mat-stroked-button color="primary" (click)="selectUser(user)">Edit</button>
+        <button mat-stroked-button color="warn" (click)="deleteUser(user.id)">Delete</button>
+      </td>
+    </ng-container>
+
+    <!-- Table Rows -->
+    <tr mat-header-row *matHeaderRowDef="['id','username', 'fullName', 'role', 'actions']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['id','username', 'fullName', 'role', 'actions'];"></tr>
+  </table>
+</div>

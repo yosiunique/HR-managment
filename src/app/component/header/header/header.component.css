@@ -1,0 +1,33 @@
+.header-toolbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  align-items: center;
+}
+
+.logo-img {
+  height: 40px;
+  margin-right: 10px;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.nav-links a {
+  margin: 0 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .nav-links a {
+    font-size: 14px;
+  }
+  
+  .logo {
+    font-size: 18px;
+  }
+
+  .logo-img {
+    height: 30px;
+  }
+}

@@ -1,0 +1,55 @@
+<app-mainheader></app-mainheader>
+<div class="container">
+  <!-- Title -->
+  <h2 class="title">Company Management</h2>
+
+  <!-- Add New Company Form -->
+  <div class="form-section">
+    <h3>Add New Company</h3>
+    <div class="form-group">
+      <input type="text" [(ngModel)]="newCompany.name" placeholder="Company Name" class="form-control" />
+      <input type="text" [(ngModel)]="newCompany.address" placeholder="Address" class="form-control" />
+      <input type="text" [(ngModel)]="newCompany.contactNumber" placeholder="Contact Number" class="form-control" />
+      <button (click)="createCompany()" class="btn btn-primary">Add</button>
+    </div>
+  </div>
+
+  <!-- Companies List -->
+  <div class="table-section">
+    <h3>Companies List</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Address</th>
+          <th>Contact Number</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let company of companies">
+          <td>{{ company.id }}</td>
+          <td>{{ company.name }}</td>
+          <td>{{ company.address }}</td>
+          <td>{{ company.contactNumber }}</td>
+          <td>
+            <button (click)="selectCompany(company)" class="btn btn-edit">Edit</button>
+            <button (click)="deleteCompany(company.id)" class="btn btn-delete">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Edit Company Form -->
+  <div *ngIf="selectedCompany" class="form-section">
+    <h3>Edit Company</h3>
+    <div class="form-group">
+      <input type="text" [(ngModel)]="selectedCompany.name" placeholder="Company Name" class="form-control" />
+      <input type="text" [(ngModel)]="selectedCompany.address" placeholder="Address" class="form-control" />
+      <input type="text" [(ngModel)]="selectedCompany.contactNumber" placeholder="Contact Number" class="form-control" />
+      <button (click)="updateCompany()" class="btn btn-primary">Update</button>
+    </div>
+  </div>
+</div>

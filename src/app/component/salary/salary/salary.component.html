@@ -1,0 +1,64 @@
+<app-mainheader></app-mainheader>
+<div class="salary-container">
+  <!-- Title -->
+  <h2 class="title">Salary Management</h2>
+
+  <!-- Edit Salary Form -->
+  <div *ngIf="selectedSalary" class="form-section">
+    <h3>Edit Salary</h3>
+    <form (ngSubmit)="updateSalary()" class="form">
+      <div class="form-group">
+        <label>Employee ID:</label>
+        <input type="number" [(ngModel)]="selectedSalary.employeeId" name="employeeId" class="form-control" required />
+      </div>
+      <div class="form-group">
+        <label>Amount:</label>
+        <input type="number" [(ngModel)]="selectedSalary.amount" name="amount" class="form-control" required />
+      </div>
+      <div class="button-group">
+        <button type="submit" class="btn btn-primary">Update</button>
+        <button type="button" (click)="selectedSalary = null" class="btn btn-secondary">Cancel</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Create Salary Form -->
+  <div *ngIf="!selectedSalary" class="form-section">
+    <h3>Create New Salary</h3>
+    <form (ngSubmit)="createSalary()" class="form">
+      <div class="form-group">
+        <label>Employee ID:</label>
+        <input type="number" [(ngModel)]="newSalary.employeeId" name="employeeId" class="form-control" required />
+      </div>
+      <div class="form-group">
+        <label>Amount:</label>
+        <input type="number" [(ngModel)]="newSalary.amount" name="amount" class="form-control" required />
+      </div>
+      <div class="button-group">
+        <button type="submit" class="btn btn-primary">Create</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Salary List -->
+  <h3>Salary List</h3>
+  <table class="salary-table">
+    <thead>
+      <tr>
+        <th>Employee ID</th>
+        <th>Amount</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let salary of salaries">
+        <td>{{ salary.employeeId }}</td>
+        <td>{{ salary.amount }}</td>
+        <td>
+          <button (click)="selectSalary(salary)" class="btn btn-edit">Edit</button>
+          <button (click)="deleteSalary(salary.id)" class="btn btn-delete">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

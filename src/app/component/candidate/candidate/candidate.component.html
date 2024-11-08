@@ -1,0 +1,85 @@
+
+
+
+<app-mainheader></app-mainheader>
+<div class="container">
+  <h2 class="title">Candidate Management</h2>
+
+  <!-- Add New Candidate Section -->
+  <div class="form-section">
+    <h3>Add New Candidate</h3>
+    <form class="form-container">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" [(ngModel)]="newCandidate.name" placeholder="Enter candidate's name" />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" [(ngModel)]="newCandidate.email" placeholder="Enter candidate's email" />
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="tel" id="phone" [(ngModel)]="newCandidate.phone" placeholder="Enter candidate's phone number" />
+      </div>
+      <div class="form-group">
+        <label for="resume">Resume</label>
+        <input type="text" id="resume" [(ngModel)]="newCandidate.resume" placeholder="Enter resume link" />
+      </div>
+      <button type="button" class="btn btn-primary" (click)="createCandidate()">Add</button>
+    </form>
+  </div>
+
+  <!-- Candidates List Section -->
+  <div class="list-section">
+    <h3>Candidates List</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Resume</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let candidate of candidates">
+          <td>{{ candidate.id }}</td>
+          <td>{{ candidate.name }}</td>
+          <td>{{ candidate.email }}</td>
+          <td>{{ candidate.phone }}</td>
+          <td>{{ candidate.resume }}</td>
+          <td>
+            <button class="btn btn-secondary" (click)="selectCandidate(candidate)">Edit</button>
+            <button class="btn btn-danger" (click)="deleteCandidate(candidate.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Edit Candidate Section -->
+  <div *ngIf="selectedCandidate" class="form-section">
+    <h3>Edit Candidate</h3>
+    <form class="form-container">
+      <div class="form-group">
+        <label for="edit-name">Name</label>
+        <input type="text" id="edit-name" [(ngModel)]="selectedCandidate.name" placeholder="Update name" />
+      </div>
+      <div class="form-group">
+        <label for="edit-email">Email</label>
+        <input type="email" id="edit-email" [(ngModel)]="selectedCandidate.email" placeholder="Update email" />
+      </div>
+      <div class="form-group">
+        <label for="edit-phone">Phone</label>
+        <input type="tel" id="edit-phone" [(ngModel)]="selectedCandidate.phone" placeholder="Update phone" />
+      </div>
+      <div class="form-group">
+        <label for="edit-resume">Resume</label>
+        <input type="text" id="edit-resume" [(ngModel)]="selectedCandidate.resume" placeholder="Update resume" />
+      </div>
+      <button type="button" class="btn btn-primary" (click)="updateCandidate()">Update</button>
+    </form>
+  </div>
+</div>

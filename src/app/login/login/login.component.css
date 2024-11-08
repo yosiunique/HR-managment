@@ -1,0 +1,57 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* height: 100vh; */
+    height: 100%;
+    background: linear-gradient(135deg, #4a90e2, #1c1c1c);
+  }
+  
+  .login-card {
+    width: 380px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    background-color: #fff;
+  }
+  
+  .card-title {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #1c1c1c;
+  }
+  
+  .card-subtitle {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .full-width {
+    width: 100%;
+    margin-top: 10px;
+  }
+  
+  .login-btn {
+    margin-top: 20px;
+    height: 50px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #1c1c1c;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .forgot-password {
+    text-align: center;
+    margin-top: 15px;
+  }
+  
+  a {
+    text-decoration: none;
+    font-size: 0.85rem;
+    color: #4a90e2;
+  }
+  

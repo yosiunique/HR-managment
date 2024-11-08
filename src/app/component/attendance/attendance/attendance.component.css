@@ -1,0 +1,22 @@
+.attendance-container {
+    padding: 16px;
+  }
+  
+  .mat-form-field {
+    width: 100%; /* Full width for form fields */
+    margin-bottom: 16px; /* Space between fields */
+  }
+  
+  .action-buttons {
+    margin-top: 16px; /* Space between form fields and buttons */
+  }
+  
+  .mat-table {
+    width: 100%; /* Full width for the table */
+    margin-top: 16px; /* Space above the table */
+  }
+  
+  .mat-header-cell, .mat-cell {
+    text-align: left; /* Align text to the left */
+  }
+  

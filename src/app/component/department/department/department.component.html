@@ -1,0 +1,82 @@
+<app-mainheader></app-mainheader>
+<div class="department-management">
+  <h2>Department Management</h2>
+
+  <!-- Edit Department Form -->
+  <mat-card *ngIf="selectedDepartment">
+    <mat-card-header>
+      <mat-card-title>Edit Department</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form (ngSubmit)="updateDepartment()" class="department-form">
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Department Name</mat-label>
+          <input matInput type="text" [(ngModel)]="selectedDepartment.name" name="name" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Head</mat-label>
+          <input matInput type="text" [(ngModel)]="selectedDepartment.head" name="head" required />
+        </mat-form-field>
+
+        <div class="action-buttons">
+          <button mat-raised-button color="primary" type="submit">Update</button>
+          <button mat-button color="warn" type="button" (click)="selectedDepartment = null">Cancel</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Create Department Form -->
+  <mat-card *ngIf="!selectedDepartment">
+    <mat-card-header>
+      <mat-card-title>Create New Department</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form (ngSubmit)="createDepartment()" class="department-form">
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Department Name</mat-label>
+          <input matInput type="text" [(ngModel)]="newDepartment.name" name="name" required />
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="form-field">
+          <mat-label>Head</mat-label>
+          <input matInput type="text" [(ngModel)]="newDepartment.head" name="head" required />
+        </mat-form-field>
+
+        <div class="action-buttons">
+          <button mat-raised-button color="primary" type="submit">Create</button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Department List -->
+  <h3>Department List</h3>
+  <mat-table [dataSource]="departments" class="mat-elevation-z8">
+    <!-- Department Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Department Name </mat-header-cell>
+      <mat-cell *matCellDef="let department"> {{ department.name }} </mat-cell>
+    </ng-container>
+
+    <!-- Head Column -->
+    <ng-container matColumnDef="head">
+      <mat-header-cell *matHeaderCellDef> Head </mat-header-cell>
+      <mat-cell *matCellDef="let department"> {{ department.head }} </mat-cell>
+    </ng-container>
+
+    <!-- Actions Column -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
+      <mat-cell *matCellDef="let department">
+        <button mat-button color="accent" (click)="selectDepartment(department)">Edit</button>
+        <button mat-button color="warn" (click)="deleteDepartment(department.id)">Delete</button>
+      </mat-cell>
+    </ng-container>
+
+    <!-- Define Header and Row -->
+    <mat-header-row *matHeaderRowDef="['name', 'head', 'actions']"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: ['name', 'head', 'actions'];"></mat-row>
+  </mat-table>
+</div>

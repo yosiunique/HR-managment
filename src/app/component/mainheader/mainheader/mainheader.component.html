@@ -1,0 +1,46 @@
+<mat-toolbar color="primary" class="header-toolbar">
+  <!-- <span class="logo">Xoka HR Management</span>
+  <span class="spacer"></span> -->
+
+  <!-- Navigation Links -->
+  <nav class="nav-links">
+    <!-- Admin: Full Access -->
+    <a mat-button *ngIf="isAdmin" routerLink="admin">
+      <mat-icon>dashboard</mat-icon> Dashboard
+    </a>
+    <a mat-button  routerLink="/candidate">
+      <mat-icon>people</mat-icon> Candidates
+    </a>
+    <a mat-button *ngIf="isAdmin || isHRManager || isHRStaff" routerLink="/employee">
+      <mat-icon>person</mat-icon> Employees
+    </a>
+    <a mat-button *ngIf="isAdmin || isManager" routerLink="/dep">
+      <mat-icon>business</mat-icon> Departments
+    </a>
+    <a mat-button *ngIf="isAdmin || isHRManager || isManager" routerLink="/attendance">
+      <mat-icon>schedule</mat-icon> Attendance
+    </a>
+    <a mat-button *ngIf="isAdmin || isManager || isHRManager" routerLink="/salary">
+      <mat-icon>monetization_on</mat-icon> Salary
+    </a>
+    <a mat-button *ngIf="isAdmin || isHRManager" routerLink="/company">
+      <mat-icon>corporate_fare</mat-icon> Company
+    </a>
+    <a mat-button *ngIf="isAdmin" routerLink="/users">
+      <mat-icon>manage_accounts</mat-icon> Users
+    </a>
+
+    <!-- Employee: Limited Access -->
+    <a mat-button *ngIf="isEmployee" routerLink="/profile">
+      <mat-icon>account_circle</mat-icon> My Profile
+    </a>
+  </nav>
+
+  <!-- User Menu -->
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="User Menu">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item  ><a href="/login">Logout</a></button>
+  </mat-menu>
+</mat-toolbar>

@@ -1,0 +1,97 @@
+Container for the entire user management section
+.user-management-container {
+  padding: 20px;
+  background-color: #f9f9f9;
+  min-height: 100vh;
+}
+
+/* Heading styles */
+h2, h3 {
+  text-align: center;
+  color: #3f51b5;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+}
+
+/* Card styles */
+.user-card {
+  margin: 20px auto;
+  max-width: 500px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  background-color: white;
+}
+
+.user-card:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Form field styling */
+.form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Buttons styling */
+.action-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+button[mat-raised-button] {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+button[mat-button] {
+  color: #3f51b5;
+}
+
+/* Table styling */
+.user-table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.mat-header-cell, .mat-cell {
+  padding: 16px;
+  text-align: left;
+  font-weight: 500;
+}
+
+.mat-header-cell {
+  background-color: #3f51b5;
+  color: white;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.mat-cell {
+  font-size: 0.95rem;
+  background-color: white;
+  transition: background-color 0.2s;
+}
+
+.mat-cell:hover {
+  background-color: #f0f0f0;
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+  .user-card {
+    max-width: 100%;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  button[mat-raised-button] {
+    width: 100%;
+  }
+}
